@@ -66,7 +66,7 @@ class wall():
     def draw(self, win):
         x = self.x * SCALE + (WIDTH / 2)
         y = self.y * SCALE + (HEIGHT / 2)
-        pygame.draw.circle(win, BLACK, (x, y), 5) # Fixed points set to be BLACK, obviously can be changed
+        pygame.draw.circle(win, BLUE, (x, y), 5) # Fixed points set to be BLACK, obviously can be changed
 
 
 
@@ -143,6 +143,7 @@ pygame.display.set_caption("Mass-Spring Simulation")
 WHITE = ((255, 255, 255))
 BLACK = ((0, 0, 0))
 RED = ((255, 0, 0))
+BLUE = ((0, 0, 255))
 
 # The main function that will be called
 def main():

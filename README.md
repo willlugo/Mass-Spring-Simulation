@@ -14,4 +14,4 @@ Line 134    - TIMESTEP      - Time is discretised in this simulation, decreasing
 
 Line 136    - WIDTH, HEIGHT - Change these values to change the physical size in pixels of the window.
 
-After Line 155, Before while run:, define masses, followed by fixed points, followed by springs, and insert them into the appropriate list.
+After Line 149, Before while run:, define masses, followed by fixed points, followed by springs, and insert them into the appropriate list.
