@@ -3,8 +3,10 @@ import numpy as np
 
 # Mass class
 class mass():
+    instances = []
     # Initialise the object requiring the initial position, mass, and initial velocity of the mass
     def __init__(self, x, y, mass, init_vx, init_vy):
+        self.__class__.instances.append(self)
         self.x = x
         self.y = y
         self.mass = mass
@@ -56,8 +58,10 @@ class mass():
 
 # Fixed point class
 class wall():
+    instances = []
     # Initialise the object requiring the initial position
     def __init__(self,x,y):
+        self.__class__.instances.append(self)
         self.x = x
         self.y = y
         # Initialises a list of all springs that are attached to this fixed point, this will be appended any time a spring object is created that is connected to this point.
@@ -74,8 +78,10 @@ class wall():
 
 # Spring class
 class spring():
+    instances = []
     # Initialise the object requiring the two objects it connects, the stiffness of the spring, and its natural length
     def __init__(self, object_1, object_2, stiffness, nat_len):
+        self.__class__.instances.append(self)
         self.object1 = object_1
         self.object2 = object_2
         self.x1 = object_1.x
@@ -129,11 +135,11 @@ pygame.init()
 
 ### Set some key values for the simulation
 # Sets the zoom factor of the simulation
-SCALE = 10
+SCALE = 5
 # Sets the rate at which the display will update (processor and monitor speed permitting)
-FPS = 60
+FPS = 144
 # Sets the discrete timestep that will be advanced every time the simulation progresses one iteration
-TIMESTEP = 0.05   
+TIMESTEP = 1 / 144
 # Sets the physical size of the pygame window
 WIDTH, HEIGHT = 800, 800
 
@@ -162,20 +168,23 @@ def main():
     # Masses defined
     mass1 = mass(-3, 0, 20, 0, 1) 
     mass2 = mass(-10, 0, 5, 0, 0)
-    # Masses inserted into list
-    masses = [mass1, mass2]   
+    mass3 = mass(-20, -10, 2, 0, 0)
 
     # Fixed points defined
     wall1 = wall(0,0)
-    # Fixed points inserted into list
-    walls = [wall1]
+    wall2 = wall(-15,-10)
 
     # Springs defined
     spring1 = spring(mass1, wall1, 10, 10)
     spring2 = spring(mass1, mass2, 5, 8)
     spring3 = spring(mass2, wall1, 1, 10)
-    # Springs inserted into list
-    springs = [spring1, spring2, spring3]
+    spring4 = spring(mass1, mass3, 10, 10)
+    spring5 = spring(wall2, mass3, 5, 20)
+
+    # Makes the lists of all instances of the classes globally accessible
+    masses = mass.instances
+    walls = wall.instances
+    springs = spring.instances
 
     # The time iterating loop in which the simulation computations are carried out
     while run:
