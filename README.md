@@ -6,12 +6,12 @@ As my first independent foray into OOP I built in python a simulation for mass-s
 
 key values to change: (Line numbers apply only to mass-spring.py, for gravity use your initiative, it's basically the same)
 
-Line 130    - SCALE         - This is the scale by which the base lengths will be multiplied to turn into pixel lengths in order to be displayed
+Line 136    - SCALE         - This is the scale by which the base lengths will be multiplied to turn into pixel lengths in order to be displayed
 
-Line 132    - FPS           - The rate at which the screen and simulation will update. Increasing this value will also increase the rate at which computations are performed up to the limit of the PC.
+Line 138    - FPS           - The rate at which the screen and simulation will update. Increasing this value will also increase the rate at which computations are performed up to the limit of the PC.
 
-Line 134    - TIMESTEP      - Time is discretised in this simulation, decreasing the timestep will give more a more accurate simulation at the cost of it running slower.
+Line 140    - TIMESTEP      - Time is discretised in this simulation, decreasing the timestep will give more a more accurate simulation at the cost of it running slower.
 
-Line 136    - WIDTH, HEIGHT - Change these values to change the physical size in pixels of the window.
+Line 142    - WIDTH, HEIGHT - Change these values to change the physical size in pixels of the window.
 
-After Line 149, Before while run:, define masses, followed by fixed points, followed by springs, and insert them into the appropriate list.
+After Line 162, Before while run:, define masses, followed by fixed points, followed by springs. This definition order is important! Springs must come last!
